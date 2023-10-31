@@ -30,8 +30,15 @@ def dTail(matrix, U, S, Vt, d):
     Vt_d = Vt[-d:, :]
     return np.dot(U_d, np.dot(S_d, Vt_d))
 
-d = min(image_matrix.shape[0], 8)
-reduced_matrix = dTail(image_matrix, U, S, Vt, d)
+def dPrincipal(matrix, U, S, Vt, d):
+    U_d = U[:, :d]
+    S_d = np.diag(S[:d])
+    Vt_d = Vt[:d, :]
+    return np.dot(U_d, np.dot(S_d, Vt_d))
+
+
+d = min(image_matrix.shape[0], 6)
+reduced_matrix = dPrincipal(image_matrix, U, S, Vt, d)
 
 def reconstruct_image(vector, shape):
     return vector.reshape(shape)
