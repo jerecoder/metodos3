@@ -53,12 +53,11 @@ image_matrix = np.vstack(image_vectors)
 U, S, Vt = np.linalg.svd(image_matrix, full_matrices=False)
 
 # Compute cosine similarity using 10 principal components
-similarities_10d = compute_similarity_for_d(image_matrix, U, S, Vt, 10)
+similarities_10d = compute_similarity_for_d(image_matrix, U, S, Vt, 16)
 
 # Plot the heatmap using Seaborn
 plt.figure(figsize=(10, 8))
 sns.heatmap(similarities_10d, annot=True, cmap='YlGnBu', cbar=True)
-plt.title('Pairwise Image Similarity using 10 dimensions')
-plt.xlabel('Image Index')
-plt.ylabel('Image Index')
+plt.xlabel('Imagen')
+plt.ylabel('Imagen')
 plt.show()
