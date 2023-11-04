@@ -36,6 +36,9 @@ def dPrincipal(matrix, U, S, Vt, d):
     Vt_d = Vt[:d, :]
     return np.dot(U_d, np.dot(S_d, Vt_d))
 
+def reduce_dimensionality(X, VT, d):
+    return X.dot(VT[:d, :].T)
+
 
 d = min(image_matrix.shape[0], 6)
 reduced_matrix = dPrincipal(image_matrix, U, S, Vt, d)
