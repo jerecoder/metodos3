@@ -142,3 +142,5 @@ plt.show(), importance_variance
 # plt.xlabel("Principal Component 1")
 # plt.ylabel("Principal Component 2")
 # plt.show()
+
+print(ordered_feature_indices)

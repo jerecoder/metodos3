@@ -40,22 +40,17 @@ def prepare_data_for_plotting(all_similarities, pairs):
             data.append([d, f"Image {i} & Image {j}", similarity])
     return pd.DataFrame(data, columns=['d', 'Pair', 'Similarity'])
 
-# Load all images from the folder "dataset_imagenes"
 folder_path = "dataset_imagenes"
 all_images = load_images_from_folder(folder_path)
 
-# Convert all images to vectors
 image_vectors = [img.ravel() for img in all_images]
 
-# Stack all vectors into a matrix
 image_matrix = np.vstack(image_vectors)
 
 U, S, Vt = np.linalg.svd(image_matrix, full_matrices=False)
 
-# Compute cosine similarity using 10 principal components
 similarities_10d = compute_similarity_for_d(image_matrix, U, S, Vt, 16)
 
-# Plot the heatmap using Seaborn
 plt.figure(figsize=(10, 8))
 sns.heatmap(similarities_10d, annot=True, cmap='YlGnBu', cbar=True)
 plt.xlabel('Imagen')
